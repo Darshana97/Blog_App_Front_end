@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: "404", component: NotFoundComponent },
   { path: "", component: ArticleListComponent },
   { path: ":key", component: ArticleComponent },
+  { path: "**", component: NotFoundComponent },
 ];
 
 @NgModule({
