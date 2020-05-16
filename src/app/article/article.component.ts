@@ -45,8 +45,20 @@ export class ArticleComponent implements OnInit {
             content: "website",
           },
           {
-            property: "og:title",
-            content: `${this.article.title} - ${this.sharedService.blogTitle}`,
+            property: "og:url",
+            content: this.sharedService.baseUrl + this.article.key,
+          },
+          {
+            property: "og:image",
+            content: this.article.imageUrl,
+          },
+          {
+            property: "og:description",
+            content: this.article.description,
+          },
+          {
+            property: "og:site_name",
+            content: this.sharedService.blogTitle,
           },
         ]);
       });
