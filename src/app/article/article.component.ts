@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Article } from "../article";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ArticleService } from "../article.service";
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: "app-article",
@@ -14,7 +15,8 @@ export class ArticleComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private articleService: ArticleService,
-    private router: Router
+    private router: Router,
+    private titleService: Title
   ) {}
 
   ngOnInit(): void {
@@ -26,7 +28,7 @@ export class ArticleComponent implements OnInit {
           return;
         }
         this.article = article;
-        console.log(article);
+        this.titleService.setTitle(`${this.article.title} - My Fancy Blog`);
       });
     });
   }
