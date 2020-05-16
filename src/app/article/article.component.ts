@@ -3,6 +3,7 @@ import { Article } from "../article";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ArticleService } from "../article.service";
 import { Title } from "@angular/platform-browser";
+import { SharedService } from "../shared.service";
 
 @Component({
   selector: "app-article",
@@ -16,7 +17,8 @@ export class ArticleComponent implements OnInit {
     private route: ActivatedRoute,
     private articleService: ArticleService,
     private router: Router,
-    private titleService: Title
+    private titleService: Title,
+    private sharedService: SharedService
   ) {}
 
   ngOnInit(): void {
@@ -28,7 +30,9 @@ export class ArticleComponent implements OnInit {
           return;
         }
         this.article = article;
-        this.titleService.setTitle(`${this.article.title} - My Fancy Blog`);
+        this.titleService.setTitle(
+          `${this.article.title} - ${this.sharedService.blogTitle}`
+        );
       });
     });
   }
