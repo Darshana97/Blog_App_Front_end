@@ -2,8 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { Article } from "../article";
 import { ARTICLES } from "../mock-articles";
 import { ArticleService } from "../article.service";
-import { Title } from '@angular/platform-browser';
-import { SharedService } from '../shared.service';
+import { Title } from "@angular/platform-browser";
+import { SharedService } from "../shared.service";
 
 @Component({
   selector: "app-article-list",
@@ -20,6 +20,7 @@ export class ArticleListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.titleService.setTitle(`${this.sharedService.blogTitle}`);
     this.getArticles();
   }
 
