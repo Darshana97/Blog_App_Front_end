@@ -11,8 +11,7 @@ export class ArticleService {
   constructor(private http: HttpClient) {}
 
   getArticles(): Observable<Article[]> {
-    const articles: Article[] = ARTICLES;
-    return of(articles);
+    return this.http.get<Article[]>("http://localhost:8000/articles");
   }
 
   getArticle(key: string): Observable<Article> {
