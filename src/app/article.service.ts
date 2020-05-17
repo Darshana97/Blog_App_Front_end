@@ -15,7 +15,6 @@ export class ArticleService {
   }
 
   getArticle(key: string): Observable<Article> {
-    const articles: Article[] = ARTICLES.filter((a) => a.key === key);
-    return of(articles[0]);
+    return this.http.get<Article>("http://localhost:8000/articles/" + key);
   }
 }
